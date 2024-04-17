@@ -5,6 +5,7 @@ import 'package:brick_breaker/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:brick_breaker/ui/views/main_menu/main_menu_view.dart';
+import 'package:brick_breaker/ui/views/game_over/game_over_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -12,6 +13,7 @@ import 'package:brick_breaker/ui/views/main_menu/main_menu_view.dart';
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
     MaterialRoute(page: MainMenuView),
+    MaterialRoute(page: GameOverView),
 // @stacked-route
   ],
   dependencies: [
