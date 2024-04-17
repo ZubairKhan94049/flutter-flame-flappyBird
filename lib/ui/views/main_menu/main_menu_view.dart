@@ -1,10 +1,17 @@
+import 'package:brick_breaker/ui/game/assets.dart';
+import 'package:brick_breaker/ui/game/flappy_bird_game.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import 'main_menu_viewmodel.dart';
 
 class MainMenuView extends StackedView<MainMenuViewModel> {
-  const MainMenuView({Key? key}) : super(key: key);
+  static const String id = 'MainMenuView';
+  final FlappyBirdGame game;
+  const MainMenuView({
+    Key? key,
+    required this.game,
+  }) : super(key: key);
 
   @override
   Widget builder(
@@ -12,10 +19,24 @@ class MainMenuView extends StackedView<MainMenuViewModel> {
     MainMenuViewModel viewModel,
     Widget? child,
   ) {
+    game.pauseEngine();
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      body: GestureDetector(
+        onTap: () {
+          game.overlays.remove('MainMenuView');
+          game.resumeEngine();
+        },
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(Assets.menu),
+              fit: BoxFit.fill,
+            ),
+          ),
+          child: Image.asset(Assets.message),
+        ),
       ),
     );
   }
